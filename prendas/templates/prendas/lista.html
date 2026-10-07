@@ -1,0 +1,63 @@
+{% extends 'prendas/base.html' %}
+
+{% block title %}Catálogo - Boutique de Ropa{% endblock %}
+
+{% block content %}
+
+<div class="titulo">
+    <h2>Catálogo de prendas</h2>
+    <p>Administra las prendas disponibles en la boutique.</p>
+</div>
+
+<a href="{% url 'crear_prenda' %}" class="boton">
+    + Agregar prenda
+</a>
+
+{% if prendas %}
+
+<table class="tabla">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Talla</th>
+            <th>Color</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Marca</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for prenda in prendas %}
+        <tr>
+            <td>{{ prenda.nombre }}</td>
+            <td>{{ prenda.categoria }}</td>
+            <td>{{ prenda.talla }}</td>
+            <td>{{ prenda.color }}</td>
+            <td>${{ prenda.precio }}</td>
+            <td>{{ prenda.stock }}</td>
+            <td>{{ prenda.marca }}</td>
+
+            <td>
+                <a href="{% url 'editar_prenda' prenda.id %}" class="boton boton-editar">
+                    Editar
+                </a>
+
+                <a href="{% url 'eliminar_prenda' prenda.id %}" class="boton boton-eliminar">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+
+<p>No hay prendas registradas todavía.</p>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'prendas/base.html' %}
+
+{% block title %}Eliminar prenda - Boutique de Ropa{% endblock %}
+
+{% block content %}
+
+<div class="titulo">
+    <h2>Eliminar prenda</h2>
+    <p>¿Estás seguro de que deseas eliminar esta prenda?</p>
+</div>
+
+<div class="formulario">
+
+    <h3>{{ prenda.nombre }}</h3>
+
+    <p>
+        <strong>Categoría:</strong> {{ prenda.categoria }}
+    </p>
+
+    <p>
+        <strong>Marca:</strong> {{ prenda.marca }}
+    </p>
+
+    <p>
+        <strong>Precio:</strong> ${{ prenda.precio }}
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <button type="submit" class="boton boton-eliminar">
+            Sí, eliminar
+        </button>
+
+        <a href="{% url 'lista_prendas' %}" class="boton boton-editar">
+            Cancelar
+        </a>
+    </form>
+
+</div>
+
+{% endblock %}
