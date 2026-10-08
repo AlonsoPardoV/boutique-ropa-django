@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Prenda
 from .forms import PrendaForm
 
+def inicio(request):
+    return render(request, 'prendas/inicio.html')
 
 def lista_prendas(request):
     prendas = Prenda.objects.all()

@@ -1,0 +1,14 @@
+{% extends 'prendas/base.html' %}
+
+{% block title %}Inicio | Boutique de Ropa{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Bienvenido a Boutique de Ropa</h1>
+    <p>Encuentra prendas para todos los estilos.</p>
+
+    <a href="{% url 'lista_prendas' %}" class="btn">
+        Ver catálogo
+    </a>
+</section>
+{% endblock %}
